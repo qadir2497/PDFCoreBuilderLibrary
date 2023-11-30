@@ -1,6 +1,6 @@
 package com.core.library.builder.pdfbuilderlibrary.model;
 
-public class Row {
+public class Section {
     public int sequence;
     public Object container;
     public int numberOfCharacters;
