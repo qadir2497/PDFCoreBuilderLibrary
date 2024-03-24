@@ -5,8 +5,7 @@ import com.core.library.builder.pdfbuilderlibrary.model.Text;
 
 import java.io.IOException;
 
-public interface ISectionContainer {
+public interface ISectionController {
 
-    ISectionContainer createSection(Section pSection) throws IOException;
-    void setTextInSection(Text pText) throws IOException;
+    ISectionController createSectionContainerAndSetText(Section pSection, Text textModel) throws IOException;
 }
