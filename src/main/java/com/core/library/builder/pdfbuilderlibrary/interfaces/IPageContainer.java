@@ -6,7 +6,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 
 public abstract class IPageContainer extends PDPage{
 
-    public PDPage uPageContainer;
+    public PDPage page;
 
     public abstract void createPage(Page pPage);
 

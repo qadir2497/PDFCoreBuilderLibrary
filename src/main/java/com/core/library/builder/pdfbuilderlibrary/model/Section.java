@@ -9,5 +9,6 @@ public class Section {
     public Float width;
     public Float x;
     public Float y;
+    public boolean isStrokeRequired;
 
 }

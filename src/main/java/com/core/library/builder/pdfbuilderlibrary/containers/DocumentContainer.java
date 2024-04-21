@@ -17,24 +17,26 @@ public class DocumentContainer extends IDocumentContainer {
 
     @Override
     public  void createDocumentContainer(Document pDocument) {
-        super.uDocumentContainer = new PDDocument();
+        super.document = new PDDocument();
         this.uDocumentModel = pDocument;
         this.uPageContainerList = new ArrayList<>();
 
     }
 
     @Override
-    public void addPageContainerToDocumentContainer(PageContainer pPageContainer) {
+    public void addPageContainerToDocumentContainer(PageContainer pPageContainer, ContentStream contentStream) {
         if(uPageContainerList.size() >= uDocumentModel.totalPages) {
             throw new PDFBuilderLibraryException().documentLimitReachedException();
         }
-        super.uDocumentContainer.addPage(pPageContainer.uPageContainer);
+        super.document.addPage(pPageContainer.page);
         uPageContainerList.add(pPageContainer);
+        pPageContainer.setParentDocumentContainer(this);
+        pPageContainer.setContentStream(contentStream);
     }
 
     @Override
     public void saveDocument() throws IOException {
-        super.uDocumentContainer.save(uDocumentModel.name);
+        super.document.save(uDocumentModel.name);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class DocumentContainer extends IDocumentContainer {
 
     @Override
     public void closeDocument() throws IOException {
-        super.uDocumentContainer.close();
+        super.document.close();
     }
 
     @Override
